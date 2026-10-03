@@ -1,0 +1,2 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{color-scheme:light}body{margin:0;background:#f6f7f8;color:#171717}.card{background:white;border:1px solid #e5e7eb;border-radius:1rem;box-shadow:0 1px 3px rgb(0 0 0/.06)}input{outline:none}button{transition:.15s}button:active{transform:scale(.98)}
