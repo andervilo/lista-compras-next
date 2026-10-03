@@ -1,2 +1,3 @@
 import {NextResponse} from "next/server";import {db,initDb,norm} from "@/lib/db";
 export async function POST(req:Request){await initDb();const{email}=await req.json();const e=norm(String(email||""));if(!/^\S+@\S+\.\S+$/.test(e))return NextResponse.json({error:"email"},{status:400});await db.execute({sql:"INSERT OR IGNORE INTO users(email) VALUES (?)",args:[e]});const r=NextResponse.json({ok:true});r.cookies.set("shopping_email",e,{httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV==="production",path:"/",maxAge:60*60*24*365});return r;}
+export async function DELETE(){const r=NextResponse.json({ok:true});r.cookies.set("shopping_email","",{httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV==="production",path:"/",maxAge:0});return r;}
